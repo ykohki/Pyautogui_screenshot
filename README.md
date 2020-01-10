@@ -16,6 +16,16 @@ Pyautoguiを使用して、Macのスクリーンショットを自動化＋pdf�
 - img2pdf
 - PyPDF2
 
+## 必要なライブラリのinstall(condaにて)
+
+```
+conda install -c conda-forge pyautogui -y
+conda install -c conda-forge pillow -y
+conda install -c conda-forge img2pdf -y
+conda install -c conda-forge pypdf2 -y
+```
+
+
 ## ポイント
 
 - Pyautoguiにて、キーボード操作を行い、ページの移動も可能
