@@ -10,7 +10,7 @@ Pyautoguiを使用して、Macのスクリーンショットを自動化＋pdf�
 % python book_screenshot_full.py left 10 /Users/yamada/SS/Pyautogui_SS/test_dir
 ```
 
-## 使用したライブラリ
+## 使用した主なライブラリ
 
 - Pyautogui
 - img2pdf
