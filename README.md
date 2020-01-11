@@ -4,10 +4,12 @@ Pyautoguiを使用して、Macのスクリーンショットを自動化＋pdf�
 
 ## 使い方
 
-```
-#python book_screenshot_full.py 右か左か ページ数 保存先のパス
+screenshot_full.pyを使う。
 
-% python book_screenshot_full.py left 10 /Users/yamada/SS/Pyautogui_SS/test_dir
+```
+#python screenshot_full.py 右か左か ページ数 保存先のパス
+
+% python screenshot_full.py left 10 /Users/yamada/SS/Pyautogui_SS/test_dir
 ```
 
 ## 使用した主なライブラリ

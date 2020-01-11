@@ -1,6 +1,6 @@
 #使い方
-#python book_screenshot.py 右か左か ページ数 保存先のパス
-#python book_screenshot.py right 342 /Users/yamada/SS/Pyautogui_SS/test_dir
+#python screenshot.py 右か左か ページ数 保存先のパス
+#python screenshot.py right 342 /Users/yamada/SS/Pyautogui_SS/test_dir
 
 import pyautogui
 import time
