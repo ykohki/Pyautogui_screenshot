@@ -4,19 +4,63 @@ Pyautoguiを使用して、Macのスクリーンショットを自動化＋pdf�
 
 ## 使い方
 
+screenshot_pos.py
+
+```bash
+% python screenshot_pos.py --help
+usage: screenshot_pos.py [-h] [-pos] [-lr LR] [-p PAGES] [-dir PATH_DIR]
+                         [-time TIME_SLEEP] [-title TITLE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -pos, --position
+  -lr LR
+  -p PAGES, --pages PAGES
+  -dir PATH_DIR, --path_dir PATH_DIR
+  -time TIME_SLEEP, --time_sleep TIME_SLEEP
+  -title TITLE
+
+#exsample
+% python screenshot_pos.py -pos -lr left -p 10 -dir ./test -time 0.2 -title test
+```
+
+
+
+<旧ver>
+
 screenshot_full.pyを使う。
 
-```
+```bash
 #python screenshot_full.py 右か左か ページ数 保存先のパス
 
 % python screenshot_full.py left 10 /Users/yamada/SS/Pyautogui_SS/test_dir
 ```
 
+
+
+## 更新履歴
+
+2020.1.10
+
+レポジトリ作成
+
+2020.1.12
+
+・スクリーンショットの範囲選択ができるように
+
+・オプションをわかりやすく
+
+
+
 ## 使用した主なライブラリ
 
 - Pyautogui
+
 - img2pdf
+
 - PyPDF2
+
+  
 
 ## 必要なライブラリのinstall(condaにて)
 
@@ -28,11 +72,14 @@ conda install -c conda-forge pypdf2 -y
 ```
 
 
+
 ## ポイント
 
 - Pyautoguiにて、キーボード操作を行い、ページの移動も可能
 - Pyautoguiにて、スクリーンショットがとれる
 - 最終的には、まとめたpdf以外のディレクトリ、ファイル類は全て削除
+
+
 
 ## 流れ
 
@@ -42,6 +89,8 @@ conda install -c conda-forge pypdf2 -y
 4. jpg→pdfに変換
 5. 複数のpdfを1枚に結合
 6. いらないファイル類を削除
+
+
 
 ## 参考
 
