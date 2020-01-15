@@ -103,6 +103,8 @@ else:
         # Turn page
         pyautogui.press(right_left)
 
+print("Converting...")
+
 # png→jpg
 path_ = "./" + title + '/*.png'
 # 保存先のディレクトリを作成
