@@ -1,11 +1,16 @@
 language: python
+
+os:
+  - linux
+  - osx
+
 python:
   - "3.5"
   - "3.6"
   - "3.7"
 
 install:
-  - pip install coveralls pyautogui pynput PIL img2pdf PyPDF2
+  - pip install coveralls pyautogui pynput pillow img2pdf PyPDF2
     
 script:
   - python test.py
