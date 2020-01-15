@@ -1,4 +1,4 @@
-# Pyautogui_screenshot
+# Pyautogui_screenshot  [![Build Status](https://travis-ci.org/ykohki/Pyautogui_screenshot.svg?branch=master)](https://travis-ci.org/ykohki/Pyautogui_screenshot)
 
 Pyautoguiを使用して、Macのスクリーンショットを自動化＋pdf変換+1つのpdfにまとめる
 
