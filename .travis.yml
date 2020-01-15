@@ -9,11 +9,15 @@ python:
   - "3.6"
   - "3.7"
 
+dist: xenial
+services:
+  - xvfb
+
 install:
   - pip install coveralls pyautogui pynput pillow img2pdf PyPDF2
     
 script:
-  - python test.py
+  - xvfb-run python test.py
 
 after_success:
   - coveralls
