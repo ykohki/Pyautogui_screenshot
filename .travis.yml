@@ -17,7 +17,7 @@ install:
   - pip install coveralls pyautogui pynput pillow img2pdf PyPDF2
     
 script:
-  - xvfb-run python test.py
+  - xvfb-run -a python test.py
 
 after_success:
   - coveralls
