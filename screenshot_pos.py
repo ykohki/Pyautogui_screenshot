@@ -85,7 +85,8 @@ if args.position is True:
     for i in range(num_pages):
         time.sleep(time_sleep)
         # Take and save a screenshot
-        sc = pyautogui.screenshot(region=(x1 * 2, y1 * 2, width * 2, hight * 2))
+        sc = pyautogui.screenshot(
+            region=(x1 * 2, y1 * 2, width * 2, hight * 2))
         sc.save("./" + title + '/page_{}.png'.format(i))
         # Turn page
         pyautogui.press(right_left)

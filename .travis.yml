@@ -2,22 +2,19 @@ language: python
 
 os:
   - linux
-  - osx
 
 python:
-  - "3.5"
   - "3.6"
   - "3.7"
 
-dist: xenial
-services:
-  - xvfb
+# safelist
+branches:
+  only:
+  - master
 
 install:
-  - pip install coveralls pyautogui pynput pillow img2pdf PyPDF2
+  - pip install flake8
     
 script:
-  - xvfb-run -a python test.py
-
-after_success:
-  - coveralls
+  - flake8 *.py
+  

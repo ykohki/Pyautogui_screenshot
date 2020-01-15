@@ -1,6 +1,6 @@
-#使い方
-#python screenshot.py 右か左か ページ数 保存先のパス
-#python screenshot.py right 342 /Users/yamada/SS/Pyautogui_SS/test_dir
+# 使い方
+# python screenshot.py 右か左か ページ数 保存先のパス
+# python screenshot.py right 342 /Users/yamada/SS/Pyautogui_SS/test_dir
 
 import pyautogui
 import time
@@ -15,8 +15,8 @@ time.sleep(5)
 # Range can be changed depending on the number of pages
 for i in range(num_pages):
     # Turn page
-    #pyautogui.keyDown('right')
-    #pyautogui.keyUp('right')
+    # pyautogui.keyDown('right')
+    # pyautogui.keyUp('right')
     pyautogui.press(right_left)
     # Take and save a screenshot
     pyautogui.screenshot(path_dir + '/page_{}.png'.format(i))
