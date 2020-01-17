@@ -82,6 +82,7 @@ if args.position is True:
     hight = y2 - y1
 
     # スクリーンショット
+    count_page = 0
     for i in range(num_pages):
         time.sleep(time_sleep)
         # Take and save a screenshot
@@ -90,11 +91,20 @@ if args.position is True:
         sc.save("./" + title + '/page_{}.png'.format(i))
         # Turn page
         pyautogui.press(right_left)
+        # ページ数カウント
+        count_page += 1
+        percent = (count_page / num_pages) * 100
+        if percent % 10 == 0:
+            print("saving... " + str(percent) + '% ' +
+                  str(count_page) + "/" + str(num_pages))
+        else:
+            continue
 
 else:
     # Sleep for 5 seconds to allow me to open book
     time.sleep(5)
     # スクリーンショット
+    count_page = 0
     for i in range(num_pages):
         time.sleep(time_sleep)
         # Take and save a screenshot
@@ -102,6 +112,14 @@ else:
         sc.save("./" + title + '/page_{}.png'.format(i))
         # Turn page
         pyautogui.press(right_left)
+        # ページ数カウント
+        count_page += 1
+        percent = (count_page / num_pages) * 100
+        if percent % 10 == 0:
+            print("saving... " + str(percent) + '% ' +
+                  str(count_page) + "/" + str(num_pages))
+        else:
+            continue
 
 print("Converting...")
 
