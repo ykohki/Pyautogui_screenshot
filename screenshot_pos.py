@@ -95,8 +95,8 @@ if args.position is True:
         count_page += 1
         percent = (count_page / num_pages) * 100
         if percent % 10 == 0:
-            print("saving... " + str(percent) + '% ' +
-                  str(count_page) + "/" + str(num_pages))
+            print("saving... " + str(percent) + '% '
+                  + str(count_page) + "/" + str(num_pages))
         else:
             continue
 
@@ -116,8 +116,8 @@ else:
         count_page += 1
         percent = (count_page / num_pages) * 100
         if percent % 10 == 0:
-            print("saving... " + str(percent) + '% ' +
-                  str(count_page) + "/" + str(num_pages))
+            print("saving... " + str(percent) + '% '
+                  + str(count_page) + "/" + str(num_pages))
         else:
             continue
 
