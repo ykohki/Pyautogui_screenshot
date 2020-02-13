@@ -16,7 +16,11 @@ import img2pdf
 import re
 import PyPDF2
 # ディレクトリの削除、移動
+import pathlib
 import shutil
+# ランダムな文字列作成
+import random
+import string
 
 # コマンドライン引数の取得
 parser = argparse.ArgumentParser()
@@ -28,13 +32,27 @@ parser.add_argument('-time', '--time_sleep')
 parser.add_argument('-title')
 args = parser.parse_args()
 
+# ランダムな文字列作成
+
+
+def randomname(n):
+    randlst = [random.choice(string.ascii_letters + string.digits)
+               for i in range(n)]
+    return ''.join(randlst)
+
+
 right_left = args.lr
 num_pages = int(args.pages)
 path_dir = args.path_dir
 time_sleep = float(args.time_sleep)
 title = args.title
 # 保存先のディレクトリを作成
-os.makedirs("./" + title)
+try:
+    os.makedirs("./" + title)
+except FileExistsError:  # すでにディレクトリが存在している場合
+    random_str = randomname(10)
+    os.makedirs("./" + title + "_" + random_str)
+    title = title + "_" + random_str
 
 # 座標取得かどうか場合分け
 if args.position is True:
@@ -83,43 +101,53 @@ if args.position is True:
 
     # スクリーンショット
     count_page = 0
+    print("staring...")
     for i in range(num_pages):
-        time.sleep(time_sleep)
-        # Take and save a screenshot
-        sc = pyautogui.screenshot(
-            region=(x1 * 2, y1 * 2, width * 2, hight * 2))
-        sc.save("./" + title + '/page_{}.png'.format(i))
-        # Turn page
-        pyautogui.press(right_left)
-        # ページ数カウント
-        count_page += 1
-        percent = (count_page / num_pages) * 100
-        if percent % 10 == 0:
-            print("saving... " + str(percent) + '% '
-                  + str(count_page) + "/" + str(num_pages))
-        else:
-            continue
+        try:
+            time.sleep(time_sleep)
+            # Take and save a screenshot
+            sc = pyautogui.screenshot(
+                region=(x1 * 2, y1 * 2, width * 2, hight * 2))
+            sc.save("./" + title + '/page_{}.png'.format(i))
+            # Turn page
+            pyautogui.press(right_left)
+            # ページ数カウント
+            count_page += 1
+            percent = (count_page / num_pages) * 100
+            if percent % 10 == 0:
+                print("saving... " + str(percent) + '% ' +
+                      str(count_page) + "/" + str(num_pages))
+            else:
+                continue
+        except KeyboardInterrupt:
+            print("Ctrl+Cで停止しました")
+            break
 
 else:
     # Sleep for 5 seconds to allow me to open book
     time.sleep(5)
     # スクリーンショット
     count_page = 0
+    print("staring...")
     for i in range(num_pages):
-        time.sleep(time_sleep)
-        # Take and save a screenshot
-        sc = pyautogui.screenshot()
-        sc.save("./" + title + '/page_{}.png'.format(i))
-        # Turn page
-        pyautogui.press(right_left)
-        # ページ数カウント
-        count_page += 1
-        percent = (count_page / num_pages) * 100
-        if percent % 10 == 0:
-            print("saving... " + str(percent) + '% '
-                  + str(count_page) + "/" + str(num_pages))
-        else:
-            continue
+        try:
+            time.sleep(time_sleep)
+            # Take and save a screenshot
+            sc = pyautogui.screenshot()
+            sc.save("./" + title + '/page_{}.png'.format(i))
+            # Turn page
+            pyautogui.press(right_left)
+            # ページ数カウント
+            count_page += 1
+            percent = (count_page / num_pages) * 100
+            if percent % 10 == 0:
+                print("saving... " + str(percent) + '% ' +
+                      str(count_page) + "/" + str(num_pages))
+            else:
+                continue
+        except KeyboardInterrupt:
+            print("Ctrl+Cで停止しました")
+            break
 
 print("Converting...")
 
@@ -171,5 +199,18 @@ merge.close()
 print("変換終了")
 
 # すべて終了後、all.pdf以外のファイル、ディレクトリを削除する
-shutil.move("./" + title + '/' + title + '.pdf', path_dir)
+
+# pdfの同じ名前のファイルが在ればリネームする
+list_file_name = []
+p_temp = pathlib.Path(path_dir).glob('*.pdf')
+for p in p_temp:
+    list_file_name.append(p.name)
+title_pdf = title + ".pdf"
+if title_pdf in list_file_name:  # 存在していれば、ランダムな名前に変更する
+    title_pdf = randomname(10) + ".pdf"
+else:
+    pass
+
+print(title_pdf)
+shutil.move("./" + title + '/' + title + '.pdf', path_dir + title_pdf)
 shutil.rmtree("./" + title)
