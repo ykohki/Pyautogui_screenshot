@@ -81,6 +81,7 @@ conda install -c conda-forge pyautogui -y
 conda install -c conda-forge pillow -y
 conda install -c conda-forge img2pdf -y
 conda install -c conda-forge pypdf2 -y
+conda install -c conda-forge pynput -y
 ```
 
 
