@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="pyautoguiscreenshot-build-status">Pyautogui_screenshot  <a href="https://travis-ci.org/ykohki/Pyautogui_screenshot"><img src="https://travis-ci.org/ykohki/Pyautogui_screenshot.svg?branch=master" alt="Build Status"></a></h1>
+<p>Pyautoguiを使用して、Macのスクリーンショットを自動化＋pdf変換+1つのpdfにまとめる</p>
+<h2 id="%E4%BD%BF%E3%81%84%E6%96%B9">使い方</h2>
+<h3 id="%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%E3%81%AE%E7%AF%84%E5%9B%B2%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E3%81%84%E3%81%A8%E3%81%8D">スクリーンショットの範囲を指定したいとき</h3>
+<p>マウスのクリック2箇所で判定する。</p>
+<p><code>screenshot_pos.py</code></p>
+<pre class="hljs"><code><div>% python screenshot_pos.py --<span class="hljs-built_in">help</span>
+usage: screenshot_pos.py [-h] [-pos] [-lr LR] [-p PAGES] [-dir PATH_DIR]
+                         [-time TIME_SLEEP] [-title TITLE]
+
+optional arguments:
+  -h, --<span class="hljs-built_in">help</span>            show this <span class="hljs-built_in">help</span> message and <span class="hljs-built_in">exit</span>
+  -pos, --position
+  -lr LR
+  -p PAGES, --pages PAGES
+  -dir PATH_DIR, --path_dir PATH_DIR
+  -time TIME_SLEEP, --time_sleep TIME_SLEEP
+  -title TITLE
+
+<span class="hljs-comment">#exsample</span>
+% python screenshot_pos.py -pos -lr left -p 10 -dir ./<span class="hljs-built_in">test</span> -time 0.2 -title <span class="hljs-built_in">test</span>
+</div></code></pre>
+<h3 id="%E5%85%A8%E7%94%BB%E9%9D%A2%E3%82%92%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88">全画面をスクリーンショットする場合</h3>
+<p><code>screenshot_full.py</code></p>
+<pre class="hljs"><code><div><span class="hljs-comment">#python screenshot_full.py 右か左か ページ数 保存先のパス</span>
+
+% python screenshot_full.py left 10 /Users/yamada/SS/Pyautogui_SS/test_dir
+</div></code></pre>
+<h2 id="%E6%9B%B4%E6%96%B0%E5%B1%A5%E6%AD%B4">更新履歴</h2>
+<p>2020.1.10</p>
+<p>レポジトリ作成</p>
+<p>2020.1.12</p>
+<p>・スクリーンショットの範囲選択ができるように</p>
+<p>・オプションをわかりやすく</p>
+<p>2020.1.15</p>
+<p>・pdfの保存先のディレクトリを選択可能に<br>
+・travisCIでpep8に従っているか確認</p>
+<p>2020.02.12</p>
+<p>・pdfの名前について、すでに存在している場合でも、名前を微修正して作成できるように</p>
+<p>・撮影中にkeyboard interuptがあれば、そこまでのpdfを作成する</p>
+<h2 id="%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E4%B8%BB%E3%81%AA%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">使用した主なライブラリ</h2>
+<ul>
+<li>
+<p>Pyautogui</p>
+</li>
+<li>
+<p>img2pdf</p>
+</li>
+<li>
+<p>PyPDF2</p>
+</li>
+</ul>
+<h2 id="%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AEinstallconda%E3%81%AB%E3%81%A6">必要なライブラリのinstall(condaにて)</h2>
+<pre class="hljs"><code><div>conda install -c conda-forge pyautogui -y
+conda install -c conda-forge pillow -y
+conda install -c conda-forge img2pdf -y
+conda install -c conda-forge pypdf2 -y
+conda install -c conda-forge pynput -y
+</div></code></pre>
+<h2 id="%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88">ポイント</h2>
+<ul>
+<li>Pyautoguiにて、キーボード操作を行い、ページの移動も可能</li>
+<li>Pyautoguiにて、スクリーンショットがとれる</li>
+<li>最終的には、まとめたpdf以外のディレクトリ、ファイル類は全て削除</li>
+</ul>
+<h2 id="%E6%B5%81%E3%82%8C">流れ</h2>
+<ol>
+<li>保存先のディレクトリを作成</li>
+<li>Pyautoguiにて、ページ移動＋スクリーンショット撮影＋一定時間sleepで待つ</li>
+<li>png→jpgに変換（Macではimg2pdfがpngではできなかったため）</li>
+<li>jpg→pdfに変換</li>
+<li>複数のpdfを1枚に結合</li>
+<li>いらないファイル類を削除</li>
+</ol>
+<h2 id="%E5%8F%82%E8%80%83">参考</h2>
+<p><a href="https://towardsdatascience.com/python-is-the-perfect-tool-for-any-problem-f2ba42889a85">Python is the Perfect Tool for any Problem - Towards Data Science</a></p>
+
+</body>
+</html>

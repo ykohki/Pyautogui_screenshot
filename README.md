@@ -3,9 +3,10 @@
 Pyautoguiを使用して、Macのスクリーンショットを自動化＋pdf変換+1つのpdfにまとめる
 
 ## 使い方
+### スクリーンショットの範囲を指定したいとき
+マウスのクリック2箇所で判定する。 
 
-screenshot_pos.py
-
+`screenshot_pos.py`
 ```bash
 % python screenshot_pos.py --help
 usage: screenshot_pos.py [-h] [-pos] [-lr LR] [-p PAGES] [-dir PATH_DIR]
@@ -24,11 +25,8 @@ optional arguments:
 % python screenshot_pos.py -pos -lr left -p 10 -dir ./test -time 0.2 -title test
 ```
 
-
-
-<旧ver>
-
-screenshot_full.pyを使う。
+### 全画面をスクリーンショットする場合
+`screenshot_full.py`
 
 ```bash
 #python screenshot_full.py 右か左か ページ数 保存先のパス
